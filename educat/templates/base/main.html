@@ -1,0 +1,25 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <!--begin::Head-->
+ {% include 'parts/head.html' %}
+  <!--end::Head-->
+  <!--begin::Body-->
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <!--begin::App Wrapper-->
+    <div class="app-wrapper">
+    {% include "parts/header.html" %}
+     {% include "parts/seidbar.html" %}
+     <div class="container-fluid card">
+     {% block content %}
+      
+     {% endblock content %}
+     </div>
+      
+     {% include "parts/footer.html" %}
+    </div>
+    <!--end::App Wrapper-->
+ {% include 'parts/app.html' %}
+  </body>
+  <!--end::Body-->
+</html>
