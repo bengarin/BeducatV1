@@ -19,3 +19,11 @@ class Matiere(models.Model):
 
     def __str__(self):
         return f"{self.title} ({self.niveau})"
+    
+    
+    def c_create(self) :
+        try:
+            self.save() 
+            return self, "Enseignant bien ajouté"
+        except Exception as e:
+            return None, f"Erreur lors de l'ajout de l'enseignant : {str(e)}"

@@ -23,15 +23,11 @@
     <div class="sidebar-wrapper">
       <nav class="mt-2">
         <!--begin::Sidebar Menu-->
-        <ul
-          class="nav sidebar-menu flex-column"
-          data-lte-toggle="treeview"
-          role="menu"
-          data-accordion="false"
-        >
-        <li class="nav-item menu-{% if request.path == '/ensignant/' or request.path == '/ensignant/créer/' %}open{% endif %}">
-          <a href="#" class="nav-link {% if request.path == '/ensignant/' or request.path == '/ensignant/créer/' %}active{% endif %}">
-              <i class="bi bi-people-fill"></i>              
+        <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+          <!-- Menu Enseignant -->
+          <li class="nav-item menu-{% if request.path == '/ensignant/' or request.path == '/ensignant/créer/' %}open{% endif %}">
+            <a href="#" class="nav-link {% if request.path == '/ensignant/' or request.path == '/ensignant/créer/' %}active{% endif %}">
+              <i class="bi bi-people-fill"></i>
               <p>
                 Enseignant
                 <i class="nav-arrow bi bi-chevron-right"></i>
@@ -41,7 +37,7 @@
               <li class="nav-item">
                 <a href="{% url 'educat:ensignant_list' %}" class="nav-link {% if request.path == '/ensignant/' %}active{% endif %}">
                   <i class="fa-solid fa-list"></i>
-                    <p>List enseignant</p>
+                  <p>List enseignant</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -52,7 +48,62 @@
               </li>
             </ul>
           </li>
+        
+          <!-- Menu Matière -->
+          <li class="nav-item menu-{% if request.path == '/matiere/' or request.path == '/matiere/créer/' %}open{% endif %}">
+            <a href="#" class="nav-link {% if request.path == '/matiere/' or request.path == '/matiere/créer/' %}active{% endif %}">
+              <i class="bi bi-book-fill"></i> <!-- Remplacer l'icône si nécessaire -->
+              <p>
+                Matière
+                <i class="nav-arrow bi bi-chevron-right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'educat:matiere_list' %}" class="nav-link {% if request.path == '/matiere/' %}active{% endif %}">
+                  <i class="fa-solid fa-list"></i>
+                  <p>List matière</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'educat:matiere_create' %}" class="nav-link {% if request.path == '/matiere/créer/' %}active{% endif %}">
+                  <i class="fa-solid fa-plus"></i>
+                  <p>Ajouter matière</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+            <!-- Menu Groupes -->
+            <li class="nav-item menu-{% if request.path == '/groupes/' or request.path == '/groupes/créer/' or request.path == '/groupes/inscription/créer/' %}open{% endif %}">
+              <a href="#" class="nav-link {% if request.path == '/groupes/' or request.path == '/groupes/créer/' or request.path == '/groupes/inscription/créer/' %}active{% endif %}">
+                <i class="fa-solid fa-users"></i> <!-- Icône d'un groupe de personnes -->
+                <p>
+                  Groupes
+                  <i class="nav-arrow bi bi-chevron-right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'educat:groupes_list' %}" class="nav-link {% if request.path == '/groupes/' %}active{% endif %}">
+                    <i class="fa-solid fa-list"></i>
+                    <p>List Groupe</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'educat:matiere_create' %}" class="nav-link {% if request.path == '/groupes/créer/' %}active{% endif %}">
+                    <i class="fa-solid fa-plus"></i>
+                    <p>Ajouter Groupes</p>
+                  </a>
+                </li> <li class="nav-item">
+                  <a href="{% url 'educat:matiere_create' %}" class="nav-link {% if request.path == '/groupes/inscription/créer/' %}active{% endif %}">
+                    <i class="fa-solid fa-plus"></i>
+                    <p>Ajouter inscription</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
         </ul>
+        
         <!--end::Sidebar Menu-->
       </nav>
     </div>

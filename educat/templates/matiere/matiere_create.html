@@ -1,0 +1,81 @@
+{% extends base_template%}
+
+
+{% block content %}
+<div class="container-fluid card">
+    <div class="card card-primary card-outline mb-4 m-3">
+        <div class="card-header">
+            <div class="card-title">Quick Example</div>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">{{ form.title.label }}</label>
+                    {{ form.title }}
+                    {% if form.title.errors %}
+                        <div class="text-danger">
+                            {% for error in form.title.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">{{ form.code.label }}</label>
+                    {{ form.code }}
+                    {% if form.code.errors %}
+                        <div class="text-danger">
+                            {% for error in form.code.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">{{ form.niveau.label }}</label>
+                    {{ form.niveau }}
+                    {% if form.niveau.errors %}
+                        <div class="text-danger">
+                            {% for error in form.niveau.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">{{ form.volume_horaire.label }}</label>
+                    {{ form.volume_horaire }}
+                    {% if form.volume_horaire.errors %}
+                        <div class="text-danger">
+                            {% for error in form.volume_horaire.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">{{ form.enseignant.label }}</label>
+                    {{ form.enseignant }}
+                    {% if form.enseignant.errors %}
+                        <div class="text-danger">
+                            {% for error in form.enseignant.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        
+        </form>
+    </div> 
+</div>
+{% endblock content %}

@@ -15,7 +15,12 @@ urlpatterns = [
     ########################################
     ############matiere###################
     #######################################
-    # path("matiere/",views.matiere,name="matiere_list"),
-    # path("matiere/créer/",views.create_matiere,name="matiere_create"),
+    path("matiere/",views.matiere,name="matiere_list"),
+    path("matiere/créer/",views.create_matiere,name="matiere_create"), 
+    ########################################
+    ############Groupes###################
+    #######################################
+    path("groupes/",views.groupes,name="groupes_list"),
+    path("matiere/créer/",views.create_matiere,name="matiere_create"),
     
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
