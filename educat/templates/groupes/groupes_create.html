@@ -1,0 +1,57 @@
+{% extends base_template%}
+
+
+{% block content %}
+<div class="container-fluid card">
+    <div class="card card-primary card-outline mb-4 m-3">
+        <div class="card-header">
+            <div class="card-title">Quick Example</div>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">{{ form.name.label }}</label>
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                        <div class="text-danger">
+                            {% for error in form.name.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">{{ form.description.label }}</label>
+                    {{ form.description }}
+                    {% if form.description.errors %}
+                        <div class="text-danger">
+                            {% for error in form.description.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">{{ form.max_inscription.label }}</label>
+                    {{ form.max_inscription }}
+                    {% if form.max_inscription.errors %}
+                        <div class="text-danger">
+                            {% for error in form.max_inscription.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        
+        </form>
+    </div> 
+</div>
+{% endblock content %}

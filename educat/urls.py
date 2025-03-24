@@ -21,6 +21,10 @@ urlpatterns = [
     ############Groupes###################
     #######################################
     path("groupes/",views.groupes,name="groupes_list"),
-    path("matiere/créer/",views.create_matiere,name="matiere_create"),
+    path("groupes/créer/",views.create_groupes,name="groupes_create"),
+     ########################################
+    ############Etudient###################
+    #######################################
+    path("etudient/créer/",views.create_etudient,name="etudient_create"),
     
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

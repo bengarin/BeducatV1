@@ -74,8 +74,8 @@
             </ul>
           </li>
             <!-- Menu Groupes -->
-            <li class="nav-item menu-{% if request.path == '/groupes/' or request.path == '/groupes/créer/' or request.path == '/groupes/inscription/créer/' %}open{% endif %}">
-              <a href="#" class="nav-link {% if request.path == '/groupes/' or request.path == '/groupes/créer/' or request.path == '/groupes/inscription/créer/' %}active{% endif %}">
+            <li class="nav-item menu-{% if request.path == '/groupes/' or request.path == '/groupes/créer/' or request.path == 'etudient/créer/' %}open{% endif %}">
+              <a href="#" class="nav-link {% if request.path == '/groupes/' or request.path == '/groupes/créer/' or request.path == 'etudient/créer/' %}active{% endif %}">
                 <i class="fa-solid fa-users"></i> <!-- Icône d'un groupe de personnes -->
                 <p>
                   Groupes
@@ -90,12 +90,12 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{% url 'educat:matiere_create' %}" class="nav-link {% if request.path == '/groupes/créer/' %}active{% endif %}">
+                  <a href="{% url 'educat:groupes_create' %}" class="nav-link {% if request.path == '/groupes/créer/' %}active{% endif %}">
                     <i class="fa-solid fa-plus"></i>
                     <p>Ajouter Groupes</p>
                   </a>
                 </li> <li class="nav-item">
-                  <a href="{% url 'educat:matiere_create' %}" class="nav-link {% if request.path == '/groupes/inscription/créer/' %}active{% endif %}">
+                  <a href="{% url 'educat:etudient_create' %}" class="nav-link {% if request.path == 'etudient/créer/' %}active{% endif %}">
                     <i class="fa-solid fa-plus"></i>
                     <p>Ajouter inscription</p>
                   </a>
