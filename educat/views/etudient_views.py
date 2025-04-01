@@ -11,18 +11,18 @@ def create_etudient(request):
             nom = form.cleaned_data.get('nom')
             prenom = form.cleaned_data.get('prenom')
             cin = form.cleaned_data.get('cin')
-            role = form.cleaned_data.get('role')
             photo_profil = form.cleaned_data.get('photo_profil')
+            groupe = form.cleaned_data.get('groupe')
 
-            prof = Etudient(
+            etudient = Etudient(
                 nom=nom,
                 prenom=prenom,
                 cin=cin,
-                role=role,
-                photo_profil=photo_profil
+                photo_profil=photo_profil,
+                groupe=groupe,
             )
 
-            obj, message = prof.c_create()
+            obj, message = etudient.c_create()
             if obj:
                 messages.success(request, message)
                 return redirect(reverse('ensignant_list'))

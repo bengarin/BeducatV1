@@ -11,3 +11,11 @@ class Etudient(models.Model):
 
     def __str__(self):
         return f"{self.nom} {self.prenom}"
+    
+    def c_create(self):
+        try:
+            self.save() 
+            return self, "Etudient bien ajouté"
+        except Exception as e:
+            return None, f"Erreur lors de l'ajout de l'etudient : {str(e)}"
+            
