@@ -1,0 +1,89 @@
+{% extends base_template%}
+
+{% block content %}
+<div class="container-fluid card">
+    <div class="card card-primary card-outline mb-2 m-3">
+        <div class="card-header">
+            <div class="card-title" style="display: flex; justify-content: space-around;width: 100%;">
+                <div class="left-part" style="display: flex; justify-content: space-around;width: 30%;">
+
+                    <div>
+                        <p>Nom </p>
+                        <p>Prenom</p>
+                        <p>Cin</p>
+                    </div>
+                    <div>
+                        <p>:</p>
+                        <p>:</p>
+                        <p>:</p>
+                    </div>
+                    <div>
+                        <p>{{instance.nom}} </p>
+                        <p>{{instance.prenom}}</p>
+                        <p>{{instance.cin }}</p>
+                    </div>
+
+                </div>
+                <div class="center-part">
+                    <p>-</p>
+                    <p>-</p>
+                    <p>-</p>
+                </div>
+                <div class="right-part" style="display: flex; justify-content: space-around;width: 50%;">
+                    <div>
+                        <p>Identifiant </p>
+                        <p>Mot de passe</p>
+                    </div>
+                    <div>
+                        <p>:</p>
+                        <p>:</p>
+                    </div>
+                    <div>
+                        <p>Nom </p>
+                        <p>Prenom</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+   
+    </div> 
+    <div class="card card-info card-outline mb-4 m-3">
+        <div class="card-header">
+            <div class="card-title text-info">List matiere</div>
+            <table class="table table-striped" >
+                <thead>
+                  <tr>
+                    <th>Matiere</th>
+                    <th>Code</th>
+                    <th>Niveau</th>
+                    <th>Groupes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for qset in list_matiere.matiere %}
+                        <tr>
+                            <td>{{ qset.title }}</td>
+                            <td>{{ qset.code }}</td>
+                            <td>{{ qset.niveau }}</td>
+                            <td>
+                                {% for groupe in list_matiere.groupes %}
+                                    {{ groupe }}{% if not forloop.last %} / {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="4">Aucune matière disponible</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                
+                
+              </table>
+        </div>
+   
+    </div> 
+</div>
+{% endblock content %}

@@ -10,5 +10,6 @@ class CreerEnseignantForm(forms.ModelForm):
             'prenom': forms.TextInput(attrs={"class": "form-control", 'placeholder': 'Entrer ton prénom...'}),
             'role': forms.Select(attrs={"class": "form-control"}),
             'cin': forms.TextInput(attrs={"class": "form-control", 'placeholder': 'Entrer ton CIN...'}),
-            'photo_profil': forms.FileInput(attrs={"class": "form-control"}),
+            'photo_profil': forms.ClearableFileInput(attrs={'class': 'custom-file-input'}),
         }
+

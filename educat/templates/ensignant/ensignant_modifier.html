@@ -1,0 +1,80 @@
+{% extends base_template%}
+
+{% block content %}
+<div class="container-fluid card">
+    <div class="card card-primary card-outline mb-4 m-3">
+        <div class="card-header">
+            <div class="card-title">Quick Example</div>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">{{ form.nom.label }}</label>
+                    {{ form.nom }}
+                    {% if form.nom.errors %}
+                        <div class="text-danger">
+                            {% for error in form.nom.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">{{ form.prenom.label }}</label>
+                    {{ form.prenom }}
+                    {% if form.prenom.errors %}
+                        <div class="text-danger">
+                            {% for error in form.prenom.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">{{ form.role.label }}</label>
+                    {{ form.role }}
+                    {% if form.role.errors %}
+                        <div class="text-danger">
+                            {% for error in form.role.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">{{ form.cin.label }}</label>
+                    {{ form.cin }}
+                    {% if form.cin.errors %}
+                        <div class="text-danger">
+                            {% for error in form.cin.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">{{ form.photo_profil.label }}</label>
+                    {{ form.photo_profil }}
+                    {% if form.photo_profil.errors %}
+                        <div class="text-danger">
+                            {% for error in form.photo_profil.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        
+        </form>
+    </div> 
+</div>
+{% endblock content %}

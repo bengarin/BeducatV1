@@ -19,31 +19,27 @@
                 <div class="card-header"><h3 class="card-title">Bordered Table</h3></div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th style="width: 10px">#</th>
-                        <th>title</th>
-                        <th>code</th>
-                        <th>niveau</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        
-                    {% for matiere in  qset%}
-                            
-                            
-                    <tr class="align-middle">
-                        <td>{{matiere.id}}</td>
-                        <td>{{matiere.title}}</td>
-                        <td>{{matiere.code}}</td>
-                        <td>{{ matiere.niveau|niveau_display }}</td>  
-
-                    </tr>
-                    {% endfor %}
-
-                    </tbody>
-                </table>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>etudient</th>
+                                <th>Cin</th>
+                                <th>Groupes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for etudient in qset %}
+                            <tr class="align-middle">
+                                <td>{{ etudient.id }}</td>
+                                <td>{{ etudient }}</td>
+                                <td>{{ etudient.cin }}</td>
+                                <td>{{ etudient.groupe }}</td>  
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">

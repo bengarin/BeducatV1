@@ -12,6 +12,8 @@ urlpatterns = [
     #######################################
     path("ensignant/",views.ensignant,name="ensignant_list"),
     path("ensignant/créer/",views.create_ensignant,name="ensignant_create"),
+    path("ensignant/<int:ensignant_id>/", views.ensignant_consulter, name="ensignant_consulter"),
+    path("ensignant/<int:ensignant_id>/modifier", views.ensignant_modifier, name="ensignant_modifier"),
     ########################################
     ############matiere###################
     #######################################
@@ -25,6 +27,7 @@ urlpatterns = [
      ########################################
     ############Etudient###################
     #######################################
-    path("etudient/créer/",views.create_etudient,name="etudient_create"),
+    path("etudiant/",views.etudiant,name="etudiant_list"),
+    path("etudiant/créer/",views.create_etudiant,name="etudiant_create"),
     
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

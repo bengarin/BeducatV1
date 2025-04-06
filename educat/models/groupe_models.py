@@ -3,7 +3,7 @@ from django.db import models
 class Groupe (models.Model) :
     name= models.CharField(max_length=30,unique=True)
     description = models.TextField(null=True,blank=True)
-    max_inscription = models.IntegerField(max_length=255,default=0)
+    max_inscription = models.IntegerField(default=0)
     
     def __str__(self):
         return self.name

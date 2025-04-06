@@ -27,8 +27,8 @@
           <!-- Menu Enseignant -->
           <li class="nav-item menu-{% if request.path == '/ensignant/' or request.path == '/ensignant/créer/' %}open{% endif %}">
             <a href="#" class="nav-link {% if request.path == '/ensignant/' or request.path == '/ensignant/créer/' %}active{% endif %}">
-              <i class="bi bi-people-fill"></i>
-              <p>
+              <i class="fa-solid fa-user-tie"></i>           
+                 <p>
                 Enseignant
                 <i class="nav-arrow bi bi-chevron-right"></i>
               </p>
@@ -94,8 +94,27 @@
                     <i class="fa-solid fa-plus"></i>
                     <p>Ajouter Groupes</p>
                   </a>
-                </li> <li class="nav-item">
-                  <a href="{% url 'educat:etudient_create' %}" class="nav-link {% if request.path == 'etudient/créer/' %}active{% endif %}">
+              </ul>
+            </li>
+            <!-- Menu etudient -->
+            <li class="nav-item menu-{% if request.path == '/etudiant/' or request.path == '/etudiant/créer/' %}open{% endif %}">
+              <a href="#" class="nav-link {% if request.path == '/etudiant/' or request.path == '/etudiant/créer/' %}active{% endif %}">
+                <i class="fa-solid fa-users-line"></i>
+                <p>
+                  Etudiant
+                  <i class="nav-arrow bi bi-chevron-right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'educat:etudiant_list' %}" class="nav-link {% if request.path == '/etudiant/' %}active{% endif %}">
+                    <i class="fa-solid fa-list"></i>
+                    <p>List etudiant</p>
+                  </a>
+                </li>
+               
+                <li class="nav-item">
+                  <a href="{% url 'educat:etudiant_create' %}" class="nav-link {% if request.path == '/etudiant/créer/' %}active{% endif %}">
                     <i class="fa-solid fa-plus"></i>
                     <p>Ajouter inscription</p>
                   </a>

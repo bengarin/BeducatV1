@@ -4,7 +4,7 @@ from educat.models import Etudient
 from educat.forms import CreerInscriptionForm
 from django.contrib import messages
 
-def create_etudient(request):
+def create_etudiant(request):
     if request.method == "POST":
         form = CreerInscriptionForm(request.POST, request.FILES)
         if form.is_valid():
@@ -35,4 +35,12 @@ def create_etudient(request):
     context = {
         "form": form
     }
-    return render(request, "groupes/etudient_create.html", context)
+    return render(request, "etudient/etudient_create.html", context)
+
+
+def etudiant(request):
+    qset = Etudient.objects.all()
+    context = {
+        "qset" : qset
+    }
+    return render(request,"etudient/etudient_list.html",context)
