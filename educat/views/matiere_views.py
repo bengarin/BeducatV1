@@ -3,13 +3,17 @@ from django.urls import reverse
 from educat.models import Matiere
 from educat.forms import CreerMatiereForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def matiere(request):
     qset = Matiere.objects.all()
     context= {
         "qset":qset,
     }
     return render(request , "matiere/matiere_list.html",context)
+
+@login_required
 def create_matiere(request):
     if request.method == "POST":
         form = CreerMatiereForm(request.POST)
@@ -31,7 +35,7 @@ def create_matiere(request):
             obj, message = matiere.c_create()
             if obj:
                 messages.success(request, message)
-                return redirect(reverse('matiere_list'))
+                return redirect(reverse('educat:matiere_list'))
             else:
                 messages.error(request, message)
 

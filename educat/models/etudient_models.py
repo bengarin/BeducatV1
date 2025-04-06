@@ -3,12 +3,22 @@ from educat.models.groupe_models import Groupe
 from django.utils import timezone
 
 class Etudient(models.Model):
+    NIVEAUX_LANGUE = [
+        ("A1", "A1 - Débutant"),
+        ("A2", "A2 - Élémentaire"),
+        ("B1", "B1 - Intermédiaire"),
+        ("B2", "B2 - Avancé"),
+        ("C1", "C1 - Expérimenté"),
+        ("C2", "C2 - Maîtrise"),
+    ]
+
     nom = models.CharField(max_length=255)
     prenom = models.CharField(max_length=255)
     cin = models.CharField(max_length=255)
     date_inscription = models.DateTimeField(auto_now_add=True)
     photo_profil = models.FileField(upload_to="profil_prof/%Y/%m/%d/", null=True, blank=True)
-    groupe = models.ForeignKey(Groupe, on_delete=models.CASCADE, null=True, blank=True)  # Correction ici !
+    niveau = models.CharField(max_length=2, choices=NIVEAUX_LANGUE, default="A1")
+    groupe = models.ForeignKey(Groupe, on_delete=models.CASCADE, null=True, blank=True) 
 
     def __str__(self):
         return f"{self.nom} {self.prenom}"

@@ -19,3 +19,7 @@ class Groupe (models.Model) :
             return self, "Enseignant bien ajouté"
         except Exception as e:
             return None, f"Erreur lors de l'ajout de l'enseignant : {str(e)}"
+        
+    def get_etudient_groupe(self):
+        from educat.models.etudient_models import Etudient
+        return Etudient.objects.filter(groupe=self)

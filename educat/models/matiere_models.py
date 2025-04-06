@@ -16,7 +16,7 @@ class Matiere(models.Model):
     code = models.CharField(max_length=15, unique=True) 
     niveau = models.CharField(max_length=2, choices=NIVEAUX_LANGUE)  
     volume_horaire = models.IntegerField(help_text="Volume horaire total en heures")  
-    enseignant = models.ManyToManyField(Enseignant, blank=True)
+    enseignant = models.ForeignKey(Enseignant, blank=True ,null=True, on_delete=models.SET_NULL)
     def __str__(self):
         return f"{self.title} ({self.niveau})"
     

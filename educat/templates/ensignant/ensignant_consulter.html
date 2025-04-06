@@ -1,4 +1,4 @@
-{% extends base_template%}
+{% extends base_template %}
 
 {% block content %}
 <div class="container-fluid card">
@@ -18,9 +18,9 @@
                         <p>:</p>
                     </div>
                     <div>
-                        <p>{{instance.nom}} </p>
-                        <p>{{instance.prenom}}</p>
-                        <p>{{instance.cin }}</p>
+                        <p>{{ instance.nom }} </p>
+                        <p>{{ instance.prenom }}</p>
+                        <p>{{ instance.cin }}</p>
                     </div>
 
                 </div>
@@ -29,33 +29,49 @@
                     <p>-</p>
                     <p>-</p>
                 </div>
-                <div class="right-part" style="display: flex; justify-content: space-around;width: 50%;">
+                <div class="right-part" style="display: flex; justify-content: space-around; width: 50%;">
                     <div>
-                        <p>Identifiant </p>
+                        <p>Identifiant</p>
                         <p>Mot de passe</p>
+                        {% if not instance.is_first_login %}
+                        <p>Reinitialiser mot de passe </p>
+                        {% endif %}
                     </div>
                     <div>
                         <p>:</p>
                         <p>:</p>
+                        {% if not instance.is_first_login %}
+                        <p>:</p>
+                        {% endif %}
                     </div>
                     <div>
-                        <p>Nom </p>
-                        <p>Prenom</p>
+                        <p>{{ instance.user.username }}</p>
+                        
+                        {% if instance.is_first_login %}
+                            <p>Mot de passe temporaire : <b>{{ instance.temp_password }}</b></p>
+                        {% else %}
+                            <p>Mot de passe défini</p>
+                            <form method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="action" value="reset_password">
+                                <a href="#" onclick="this.closest('form').submit();">Cliquez ici pour réinitialiser votre mot de passe...</a>
+                            </form>
+                            
+                        {% endif %}
                     </div>
-
                 </div>
+                
             </div>
         </div>
         
-   
     </div> 
     <div class="card card-info card-outline mb-4 m-3">
         <div class="card-header">
-            <div class="card-title text-info">List matiere</div>
-            <table class="table table-striped" >
+            <div class="card-title text-info">Liste des matières</div>
+            <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>Matiere</th>
+                    <th>Matière</th>
                     <th>Code</th>
                     <th>Niveau</th>
                     <th>Groupes</th>
@@ -69,7 +85,7 @@
                             <td>{{ qset.niveau }}</td>
                             <td>
                                 {% for groupe in list_matiere.groupes %}
-                                    {{ groupe }}{% if not forloop.last %} / {% endif %}
+                                <a href="{% url 'educat:groupe_consulter' groupe.id %}">{{ groupe }}</a>{% if not forloop.last %} / {% endif %}
                                 {% endfor %}
                             </td>
                         </tr>
@@ -79,8 +95,6 @@
                         </tr>
                     {% endfor %}
                 </tbody>
-                
-                
               </table>
         </div>
    

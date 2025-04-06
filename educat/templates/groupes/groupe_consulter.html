@@ -1,0 +1,81 @@
+{% extends base_template %}
+
+{% block content %}
+<div class="container-fluid card">
+    <div class="card card-primary card-outline mb-2 m-3">
+        <div class="card-header">
+            <div class="card-title" style="display: flex; justify-content: space-around;width: 100%;">
+                <div class="left-part" style="display: flex; justify-content: space-around;width: 30%;">
+
+                    <div>
+                        <p>Nom </p>
+                        <p>Description</p>
+                        <p>Number max description</p>
+                    </div>
+                    <div>
+                        <p>:</p>
+                        <p>:</p>
+                        <p>:</p>
+                    </div>
+                    <div>
+                        <p>{{ instance.name }} </p>
+                        <p>{{ instance.description|default:"--------" }}</p>
+                        <p>{{ instance.max_inscription  }}</p>
+                    </div>
+
+                </div>
+                <div class="center-part">
+                    <p>-</p>
+                    <p>-</p>
+                    <p>-</p>
+                </div>
+                <div class="right-part" style="display: flex; justify-content: space-around; width: 50%;">
+                    <div>
+                        <p>Nombre de participants</p>
+
+                    </div>
+                    <div>
+                        <p>:</p>
+                    </div>
+                    <div>
+                        <p>{{ instance.count_inscription }}</p>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div> 
+    <div class="card card-info card-outline mb-4 m-3">
+        <div class="card-header">
+            <div class="card-title text-info">Liste des participants</div>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Etudient</th>
+                    <th>Cin</th>
+                    <th>Niveau</th>
+                    <th>Date inscriptioneau</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for etudient in instance.get_etudient_groupe %}
+                    <tr>
+                        <td>{{ etudient.nom }}</td>
+                        <td>{{ etudient.cin }}</td>
+                        <td>{{ etudient.niveau }}</td>
+                        <td>{{ etudient.date_inscription|date:"d/m/Y" }}</td>
+                    </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="4">Aucune matière disponible</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+        </div>
+   
+    </div> 
+</div>
+{% endblock content %}

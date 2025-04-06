@@ -4,14 +4,16 @@ from educat.forms.ensignant_forms import CreerEnseignantForm
 from educat.models import Enseignant ,Matiere
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def ensignant(request):
     qset = Enseignant.objects.all()
     context = {
         "qset" : qset
     }
     return render(request,"ensignant/ensignant_list.html",context)
-
+@login_required
 def create_ensignant(request):
     if request.method == "POST":
         form = CreerEnseignantForm(request.POST, request.FILES)
@@ -33,7 +35,7 @@ def create_ensignant(request):
             obj, message = prof.c_create()
             if obj:
                 messages.success(request, message)
-                return redirect(reverse('ensignant_list'))
+                return redirect(reverse('educat:ensignant_list'))
             else:
                 messages.error(request, message)
 
@@ -44,18 +46,25 @@ def create_ensignant(request):
         "form": form
     }
     return render(request, "ensignant/ensignant_create.html", context)
-
+@login_required
 def ensignant_consulter(request,ensignant_id):
     instance = get_object_or_404(Enseignant,pk = ensignant_id)
     list_matiere = Matiere.get_groupes_matiere_enseignant(ensignant_id)
-    print(list_matiere)
+    if request.method == "POST":
+        if request.POST.get('action') == "reset_password":
+            obj,message = instance.reset_password()
+            if obj:
+                messages.success(request, message)
+                return redirect(reverse('educat:ensignant_list'))
+            else:
+                messages.error(request, message)
     context = {
         "instance" : instance,
         "list_matiere":list_matiere
     }
     return render(request, "ensignant/ensignant_consulter.html", context)
 
-
+@login_required
 def ensignant_modifier(request, ensignant_id):
     instance = get_object_or_404(Enseignant, pk=ensignant_id)
 

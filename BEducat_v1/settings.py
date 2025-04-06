@@ -129,3 +129,6 @@ ROLE_ENSIGNANT = [
 
 # setting template
 BASE_TEMPLATE = "base/main.html"
+
+LOGIN_URL = '/login/'
+

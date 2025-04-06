@@ -3,7 +3,10 @@ from django.urls import reverse
 from educat.models import Etudient
 from educat.forms import CreerInscriptionForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def create_etudiant(request):
     if request.method == "POST":
         form = CreerInscriptionForm(request.POST, request.FILES)
@@ -25,7 +28,7 @@ def create_etudiant(request):
             obj, message = etudient.c_create()
             if obj:
                 messages.success(request, message)
-                return redirect(reverse('ensignant_list'))
+                return redirect(reverse('educat:etudiant_list'))
             else:
                 messages.error(request, message)
 
@@ -37,7 +40,7 @@ def create_etudiant(request):
     }
     return render(request, "etudient/etudient_create.html", context)
 
-
+@login_required
 def etudiant(request):
     qset = Etudient.objects.all()
     context = {

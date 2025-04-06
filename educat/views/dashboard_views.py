@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from educat.models import Enseignant ,Etudient
-# Create your views here.
+from django.contrib.auth.decorators import login_required
 
+# Create your views here.
+@login_required
 def home(request) :
     inscription_ce_mois = Etudient.get_inscription_ce_mois()
     inscription_total = Etudient.get_inscription_total()
